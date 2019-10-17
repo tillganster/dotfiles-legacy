@@ -190,3 +190,11 @@ if [[ "$(uname -s)" == "Linux" ]]; then
 else
   export LSCOLORS='ExFxBxDxCxegedabagacad'
 fi
+
+function chpwd() {
+    emulate -L zsh
+    ls -lsa
+}
+
+source ~/.dotfiles/shell/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
