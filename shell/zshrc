@@ -140,7 +140,6 @@ if _has fzf; then
     source ~/.fzf/shell/completion.zsh
   elif [ -f ~/.fzf.zsh ]; then
     # Auto-generated completion script when installing from custom path.
-    source ~/.fzf.zsh
   fi
 
   if _has fd; then
