@@ -65,6 +65,9 @@ Plug 'ryanoasis/vim-devicons'
 
 Plug 'tpope/vim-fugitive', { 'tag': 'v3.0' }
 Plug 'airblade/vim-gitgutter'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'valloric/youcompleteme'
+Plug 'easymotion/vim-easymotion'
 call plug#end()
 
 " Map ctrl-n to toggle NERDTree.
@@ -302,3 +305,21 @@ endif
 if filereadable(glob("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
+
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+
+" Jump to anywhere you want with minimal keystrokes, with just one key binding.
+" `s{char}{label}`
+nmap s <Plug>(easymotion-overwin-f)
+" or
+" `s{char}{char}{label}`
+" Need one more keystroke, but on average, it may be more comfortable.
+nmap s <Plug>(easymotion-overwin-f2)
+
+" Turn on case-insensitive feature
+let g:EasyMotion_smartcase = 1
+
+" JK motions: Line motions
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+
