@@ -197,3 +197,4 @@ function chpwd() {
 }
 
 alias k='kubectl'
+source /Users/deniz/.dotfiles/shell/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
