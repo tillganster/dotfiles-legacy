@@ -4,3 +4,6 @@
 [submodule "shell/fzf"]
 	path = shell/fzf
 	url = https://github.com/junegunn/fzf.git
+[submodule "shell/zsh-autosuggestions"]
+	path = shell/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions.git
