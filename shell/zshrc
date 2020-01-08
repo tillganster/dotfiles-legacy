@@ -92,7 +92,7 @@ POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
   time
   vi_mode
 )
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+POWERLEVEL9K_PROMPT_ON_NEWLINE=false
 POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 
@@ -197,6 +197,9 @@ function chpwd() {
 }
 
 alias k='kubectl'
-source /Users/deniz/.dotfiles/shell/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /Users/deniz/.dotfiles/shell/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.dotfiles/shell/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.dotfiles/shell/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE=fg=#fff
+source <(kubectl completion zsh)
+#source ~/.kubectl_fzf.plugin.zsh
