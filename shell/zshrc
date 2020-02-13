@@ -193,7 +193,7 @@ fi
 # ls after path change
 function chpwd() {
     emulate -L zsh
-    ls -lsa
+    ls -l
 }
 
 alias k='kubectl'

@@ -60,6 +60,8 @@ Plug 'sheerun/vim-polyglot', { 'tag': 'v4.2.0' }
 Plug 'google/vim-maktaba', { 'tag': 'v0.15.0' }
 Plug 'bazelbuild/vim-bazel'
 
+Plug 'stephpy/vim-yaml'
+
 Plug 'altercation/vim-colors-solarized'
 Plug 'ryanoasis/vim-devicons'
 
