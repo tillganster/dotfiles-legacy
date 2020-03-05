@@ -12,6 +12,8 @@ plugins=(
   history-substring-search
   colored-man-pages
   vi-mode
+  docker
+  docker-compose
 )
 
 # Returns whether the given command is executable or aliased.
