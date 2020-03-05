@@ -201,12 +201,11 @@ source ~/.dotfiles/shell/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.dotfiles/shell/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE=fg=#fff
-source <(kubectl completion zsh)
-#source ~/.kubectl_fzf.plugin.zsH
 if [ -f ~/.dir_colors/dircolors ]
   then eval `dircolors ~/.dir_colors/dircolors`
 fi
 alias sc='bash ~/sshlist'
+alias t='terraform'
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
