@@ -1,0 +1,13 @@
+if _has kubectl; then
+  # get
+  alias kgpa='kubectl get po --all-namespaces'
+  alias kgp='kubectl get po -o wide'
+  alias kgsa='kubectl get svc --all-namespaces'
+  alias kgs='kubectl get svc -o wide'
+  # describe
+  alias kds='kubectl describe svc'
+  alias kdp='kubectl describe pod'
+  # 
+  alias kga='kubectl get all --all-namespaces -o wide'
+  alias kg='kubectl get all -o wide'
+fi
