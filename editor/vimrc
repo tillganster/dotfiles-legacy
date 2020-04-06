@@ -326,7 +326,10 @@ map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 
 
-" t to open empty new tab
+" tabmotions  //t to open empty new tab
 nnoremap t :tabnew<CR>
+nnoremap <S-j> :tabn<CR>
+nnoremap <S-k> :tabp<CR>
 nnoremap <C-x> :q!
 nnoremap <C-w> :q!<CR>
+
