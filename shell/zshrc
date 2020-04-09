@@ -14,6 +14,10 @@ plugins=(
   vi-mode
   docker
   docker-compose
+  taskwarrior
+  systemd
+  terraform
+  helm
 )
 
 # Returns whether the given command is executable or aliased.
@@ -208,7 +212,7 @@ if [ -f ~/.dir_colors/dircolors ]
   then eval `dircolors ~/.dir_colors/dircolors`
 fi
 alias sc='bash ~/sshlist'
-alias t='terraform'
+alias tf='terraform'
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

@@ -330,6 +330,5 @@ map <Leader>k <Plug>(easymotion-k)
 nnoremap t :tabnew<CR>
 nnoremap <S-j> :tabn<CR>
 nnoremap <S-k> :tabp<CR>
-nnoremap <C-x> :q!
-nnoremap <C-w> :q!<CR>
+nnoremap <C-x> :q!<CR>
 
