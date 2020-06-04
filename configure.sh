@@ -59,6 +59,9 @@ declare -a FILES_TO_SYMLINK=(
 
 declare -a FULL_PATH_FILES_TO_SYMLINK=(
   'config/nvim/init.vim'
+
+  'config/Code/settings.json'
+  'config/Code/keybindings.json'
 )
 
 print_success() {
@@ -144,6 +147,17 @@ install_zsh() {
   fi
 }
 
+install_kubectl() {
+  $(curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl)
+  chmod +x ./kubectl
+  sudo mv ./kubectl /usr/local/bin/kubectl
+  kubectl version --client
+}
+
+install_helm(){
+  $(curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash)
+}
+
 link_file() {
   local sourceFile=$1
   local targetFile=$2
@@ -204,6 +218,17 @@ if [[ $BUILD ]]; then
       install_zsh
     fi
   fi
+
+  # Prompt to switch to zsh and oh-my-zsh if not active on terminal.
+  if [  ! -f /usr/local/bin/kubectl ]; then
+    ask_for_confirmation "install k8s and helm?"
+    if answer_is_yes; then
+      install_kubectl 
+      install_helm
+    fi
+  fi
+
+ #//TODO: youcomplete me install
 
   # Link static gitignore.
   git config --global include.path ~/.gitconfig.static

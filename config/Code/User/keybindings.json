@@ -1,0 +1,50 @@
+// Place your key bindings in this file to override the defaults
+[
+  {
+    "key": "tab",
+    "command": "selectNextQuickFix",
+    "when": "editorFocus && quickFixWidgetVisible"
+  },
+  {
+    "key": "shift+tab",
+    "command": "selectPrevQuickFix",
+    "when": "editorFocus && quickFixWidgetVisible"
+  },
+  {
+    "key": "tab",
+    "command": "selectNextSuggestion",
+    "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
+  },
+  {
+    "key": "shift+tab",
+    "command": "selectPrevSuggestion",
+    "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
+  },
+   //{ "key": "shift+space", "command": "workbench.action.terminal.focus"},
+  //{ "key": "shift+space", "command": "workbench.action.focusActiveEditorGroup", "when": "terminalFocus"},
+  {
+    "key": "ctrl+n",
+    "command": "workbench.view.explorer"
+  },
+  {
+    "key": "ctrl+e",
+    "command": "workbench.action.focusActiveEditorGroup"
+  },
+  {
+    "key": "ctrl+t",
+    "command": "workbench.action.terminal.focus"
+  }
+  /*{
+    "key": "shift+k",
+    "command": "workbench.action.nextEditor"
+  },
+  {
+    "key": "shift+j",
+    "command": "workbench.action.previousEditor"
+  },
+  {
+    "key": "ctrl+w",
+    "command": "-extension.vim_ctrl+w",
+    "when": "editorTextFocus && vim.active && vim.use<C-w> && !inDebugRepl"
+  }*/
+]

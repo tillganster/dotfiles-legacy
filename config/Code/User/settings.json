@@ -1,0 +1,53 @@
+{
+  "files.exclude": {
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true
+  },
+  "vim.disableAnnoyingNeovimMessage": true,
+  "window.zoomLevel": 1,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "workbench.colorTheme": "Solarized Dark",
+  "[yaml]": {},
+  "yaml.schemas": {
+    "Kubernetes": "*.yaml"
+  },
+  "go.formatTool": "goimports",
+  "go.useLanguageServer": true,
+  "editor.tabCompletion": "on",
+  "emmet.triggerExpansionOnTab": true,
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["K"],
+      "commands": ["workbench.action.nextEditor"]
+    },
+    {
+      "before": ["J"],
+      "commands": ["workbench.action.previousEditor"]
+    },
+    {
+      "before": ["<C-w>"],
+      "commands": ["workbench.action.closeActiveEditor"]
+    },
+    {
+      "before": ["t"],
+      "commands": ["workbench.action.quickOpen"]
+    },
+    {
+      "before": ["<C-j>"],
+      "commands": ["editor.action.revealDefinition"]
+    },
+    {
+      "before": ["<C-k>"],
+      "commands": ["editor.action.goToReferences"]
+    }
+  ]
+}
