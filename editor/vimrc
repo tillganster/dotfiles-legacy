@@ -70,6 +70,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'valloric/youcompleteme'
 Plug 'easymotion/vim-easymotion'
+Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 call plug#end()
 
 " Map ctrl-n to toggle NERDTree.
@@ -328,7 +329,7 @@ map <Leader>k <Plug>(easymotion-k)
 
 " tabmotions  //t to open empty new tab
 nnoremap t :tabnew<CR>
-nnoremap <S-j> :tabn<CR>
-nnoremap <S-k> :tabp<CR>
+nnoremap <S-k> :tabn<CR>
+nnoremap <S-j> :tabp<CR>
 nnoremap <C-x> :q!<CR>
 
