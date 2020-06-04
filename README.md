@@ -227,6 +227,29 @@ cd ~/.dotfiles
 rm -rf ~/.oh-my-zsh # optionally remove oh-my-zsh
 chsh -s $(which bash) # optionally change shell back to bash
 ```
+## TODOs:
+
+-youcomplete me install
+-vs code extensions install or link:
+  dbaeumer.vscode-eslint-2.1.5
+  dsznajder.es7-react-js-snippets-2.7.1
+  esbenp.prettier-vscode-4.7.0
+  extensions
+  ipedrazas.kubernetes-snippets-0.1.9
+  ms-azuretools.vscode-docker-1.2.1
+  ms-kubernetes-tools.vscode-kubernetes-tools-1.2.0
+  ms-vscode.go-0.14.3
+  msjsdiag.debugger-for-chrome-4.12.8
+  msjsdiag.vscode-react-native-0.16.0
+  redhat.java-0.62.0
+  redhat.vscode-yaml-0.8.0
+  visualstudioexptteam.vscodeintellicode-1.2.7
+  vscjava.vscode-java-debug-0.26.0
+  vscjava.vscode-java-dependency-0.10.1
+  vscjava.vscode-java-pack-0.9.1
+  vscjava.vscode-java-test-0.22.4
+  vscjava.vscode-maven-0.21.4
+  vscodevim.vim-1.14.5
 
 [solarized]: <http://ethanschoonover.com/solarized>
 [homebrew]: <http://brew.sh/>
