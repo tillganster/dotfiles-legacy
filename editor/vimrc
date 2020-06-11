@@ -326,6 +326,7 @@ let g:EasyMotion_smartcase = 1
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 
+let g:coc_disable_startup_warning = 1
 
 " tabmotions  //t to open empty new tab
 nnoremap t :tabnew<CR>

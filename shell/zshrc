@@ -21,6 +21,7 @@ plugins=(
   golang
   npm
   web-search
+  aws
 )
 
 # Returns whether the given command is executable or aliased.

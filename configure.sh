@@ -60,8 +60,8 @@ declare -a FILES_TO_SYMLINK=(
 declare -a FULL_PATH_FILES_TO_SYMLINK=(
   'config/nvim/init.vim'
 
-  'config/Code/settings.json'
-  'config/Code/keybindings.json'
+  'config/Code/User/settings.json'
+  'config/Code/User/keybindings.json'
 )
 
 print_success() {
@@ -136,6 +136,7 @@ install_zsh() {
   # Set the default shell to zsh if it isn't currently set to zsh
   if [[ ! "$SHELL" == "$(command -v zsh)" ]]; then
     chsh -s "$(command -v zsh)"
+    echo "change you shell"
   fi
   # Clone Oh My Zsh if it isn't already present
   if [[ ! -d $HOME/.oh-my-zsh/ ]]; then
@@ -156,6 +157,12 @@ install_kubectl() {
 
 install_helm(){
   $(curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash)
+}
+
+install_kops(){
+  $(curl -Lo kops https://github.com/kubernetes/kops/releases/download/$(curl -s https://api.github.com/repos/kubernetes/kops/releases/latest | grep tag_name | cut -d '"' -f 4)/kops-linux-amd64)
+  chmod +x ./kops
+  sudo mv ./kops /usr/local/bin/
 }
 
 link_file() {
@@ -219,12 +226,12 @@ if [[ $BUILD ]]; then
     fi
   fi
 
-  # Prompt to switch to zsh and oh-my-zsh if not active on terminal.
   if [  ! -f /usr/local/bin/kubectl ]; then
     ask_for_confirmation "install k8s and helm?"
     if answer_is_yes; then
       install_kubectl 
       install_helm
+      install_kops
     fi
   fi
 
