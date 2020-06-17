@@ -22,6 +22,8 @@ plugins=(
   npm
   web-search
   aws
+  kops
+  kubectl
 )
 
 # Returns whether the given command is executable or aliased.
