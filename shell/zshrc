@@ -208,10 +208,8 @@ function chpwd() {
     ls -l
 }
 
-alias k='kubectl'
 source ~/.dotfiles/shell/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.dotfiles/shell/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.dotfiles/shell/k8skeybindings
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE=fg=#fff
 if [ -f ~/.dir_colors/dircolors ]
@@ -224,5 +222,4 @@ export NVM_DIR="$HOME/.nvm"
 export PATH=$PATH:/usr/local/go/bin
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-source <(kubectl completion zsh)
-source <(kops completion zsh)
+source ~/.kubectl_fzf.plugin.zsh
