@@ -20,6 +20,7 @@ plugins=(
   helm
   golang
   npm
+  yarn
   web-search
   aws
   kops
