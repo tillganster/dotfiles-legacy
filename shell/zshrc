@@ -71,7 +71,7 @@ alias tmux="TERM=screen-256color-bce tmux"
 alias t="tmux a -d 2> /dev/null || tmux"
 
 # Use Python 3! https://pythonclock.org
-alias python="python3"
+alias python="python3.7"
 alias pip="pip3"
 
 # Use Neovim instead of classic vim (if available)
@@ -224,3 +224,8 @@ export PATH=$PATH:/usr/local/go/bin
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 source ~/.kubectl_fzf.plugin.zsh
+
+# No Hisotry logging for Jrnl
+setopt HIST_IGNORE_SPACE
+alias jrnl=" jrnl"
+alias kctr='kubectl -n rook-ceph exec -it $(kubectl -n rook-ceph get pod -l "app=rook-ceph-tools" -o jsonpath="{.items[0].metadata.name}") bash'
