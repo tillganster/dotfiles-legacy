@@ -1,0 +1,34 @@
+colors:
+  body: none
+  date: BLUE
+  tags: none
+  title: none
+default_hour: 9
+default_minute: 0
+editor: vim
+encrypt: true
+highlight: true
+indent_character: '|'
+journals:
+  default: /lhome/dkadiog/Documents/notes/Aktuelles.txt
+  wv: 
+    journal: /lhome/dkadiog/Documents/notes/WebVis/aktuell.txt
+    encrypt: false
+    template: /lhome/dkadiog/Documents/notes/.notes/wv.txt
+  tdp: 
+    journal: /lhome/dkadiog/Documents/notes/TDP/aktuell.txt
+    encrypt: false
+    template: /lhome/dkadiog/Documents/notes/.notes/tdp.txt
+  kar: 
+    journal: /lhome/dkadiog/Documents/notes/KAR/atkuell.txt
+    encrypt: false
+    template: /lhome/dkadiog/Documents/notes/.notes/kar.txt
+  deve: 
+    journal: /lhome/dkadiog/Documents/notes/DEVE/aktuell.txt
+    encrypt: false
+    template: /lhome/dkadiog/Documents/notes/.notes/deve.txt
+linewrap: 79
+tagsymbols: '@'
+template: /lhome/dkadiog/Documents/notes/.notes/template.txt
+timeformat: '%Y-%m-%d %H:%M'
+version: v2.4.5

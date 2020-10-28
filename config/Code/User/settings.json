@@ -13,6 +13,10 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true
   },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
   "[go]": {
     "editor.insertSpaces": false,
     "editor.formatOnSave": true,
@@ -40,6 +44,14 @@
     {
       "before": ["J"],
       "commands": ["workbench.action.previousEditor"]
+    },
+    {
+      "before": ["<C-h>"],
+      "commands": ["workbench.action.navigateBack"]
+    },
+    {
+      "before": ["<C-l>"],
+      "commands": ["workbench.action.navigateForward"]
     },
     {
       "before": ["<C-w>"],
