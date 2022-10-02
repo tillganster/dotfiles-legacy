@@ -226,7 +226,17 @@ if [[ $BUILD ]]; then
       install_zsh
     fi
   fi
-
+  ask_for_confirmation "install standard cli tools you need"
+  if answer_is_yes; then 
+    brew install jq
+    curl -s "https://get.sdkman.io" | bash
+    brew install docker
+    brew install go 
+    brew install derailed/k9s/k9s
+    brew install node
+    brew install gh
+     
+  fi
   if [  ! -f /usr/local/bin/kubectl ]; then
     ask_for_confirmation "install k8s and helm?"
     if answer_is_yes; then
