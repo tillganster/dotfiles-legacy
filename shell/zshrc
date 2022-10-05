@@ -233,3 +233,6 @@ alias kctr='kubectl -n rook-ceph exec -it $(kubectl -n rook-ceph get pod -l "app
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# gh cli 
+compctl -K _gh gh
