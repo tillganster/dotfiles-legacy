@@ -51,7 +51,8 @@ declare -a FILES_TO_SYMLINK=(
   'shell/dircolors.256dark'
   'shell/ignore'
   'shell/tmux.conf'
-  'shell/zshrc'
+  'shell/zshrc' 
+  'shell/zprofile'
 
   'third_party/Gdbinit/gdbinit'
   'third_party/zsh-interactive-cd/zsh-interactive-cd.plugin.zsh'
@@ -230,22 +231,7 @@ if [[ $BUILD ]]; then
       install_zsh
     fi
   fi
-  ask_for_confirmation "install standard cli tools you need"
-  if answer_is_yes; then 
-    brew install jq
-    curl -s "https://get.sdkman.io" | bash
-    brew install docker
-    brew install go 
-    brew install derailed/k9s/k9s
-    brew install node
-    brew install fzf
-    # TODO install k8s fzf plugin
-    brew install gh
-    gh completion --shell zsh > $ZSH_CUSTOM/plugins/gh.zsh
-    #echo "# github" >> ~/.zshrc.local
-    #echo "compctl -K _gh gh
-     
-  fi
+  
   if [  ! -f /usr/local/bin/kubectl ]; then
     ask_for_confirmation "install k8s and helm?"
     if answer_is_yes; then

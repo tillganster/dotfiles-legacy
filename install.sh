@@ -10,7 +10,7 @@
 { # This ensures the entire script is downloaded.
 
   basedir=$HOME/.dotfiles
-  repourl=https://github.com/dkadio/dotfiles.git
+  repourl=https://github.com/tillganster/dotfiles.git
 
   if ! command -v git >/dev/null ; then
     echo "Error: Git is not installed!"
@@ -27,8 +27,9 @@
 
   cd "$basedir" || exit
   . configure.sh -t build
-
+  ./install_clis.sh
   cd shell/fzf
   ./install
+
 
 } # This ensures the entire script is downloaded.
