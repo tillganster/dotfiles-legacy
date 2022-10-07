@@ -25,11 +25,12 @@
     #git pull --quiet --rebase origin master
   else
     rm -rf "$basedir"
-    git clone --quiet --depth=1 "$repourl" "$basedir"
+    git clone --quiet --recurse-submodules  "$repourl" "$basedir"
   fi
 
   cd "$basedir" || exit
   . configure.sh -t build
+  source ~/.zshrc
   ./install_clis.sh
   #cd shell/fzf
   #./install
