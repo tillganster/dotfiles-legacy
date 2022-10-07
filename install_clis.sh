@@ -60,7 +60,7 @@ ask_for_confirmation "install standard cli tools you need"
     brew install node
     brew install nvm
     brew install fzf
-    wget https://raw.githubusercontent.com/bonnefoa/kubectl-fzf/main/shell/kubectl_fzf.plugin.zsh -O ~/.kubectl_fzf.plugin.zsh
+    curl https://raw.githubusercontent.com/bonnefoa/kubectl-fzf/main/shell/kubectl_fzf.plugin.zsh -O ~/.kubectl_fzf.plugin.zsh
     echo "You have to install kubectl-fzf-server to get this plugin to work"
     echo -e '\e]8;;https://github.com/bonnefoa/kubectl-fzf\aSee here\e]8;;\a'
     # TODO install k8s fzf plugin
