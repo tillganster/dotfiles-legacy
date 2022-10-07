@@ -66,6 +66,8 @@ ask_for_confirmation "install standard cli tools you need"
     # TODO install k8s fzf plugin
     brew install gh
     brew install go-task/tap/go-task
+    brew install kubectl 
+    brew install helm
     gh completion --shell zsh > $ZSH_CUSTOM/plugins/gh.zsh
     #echo "# github" >> ~/.zshrc.local
     #echo "compctl -K _gh gh     

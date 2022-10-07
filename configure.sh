@@ -133,6 +133,7 @@ install_zsh() {
       fi
     elif [[ $platform == 'Darwin' ]]; then
       brew install zsh
+      
     fi
   fi
   # Set the default shell to zsh if it isn't currently set to zsh
@@ -155,11 +156,11 @@ install_kubectl() {
   #chmod +x ./kubectl
   #sudo mv ./kubectl /usr/local/bin/kubectl
   #kubectl version --client
-  brew list kubectl || brew install kubectl 
+  #brew list kubectl || brew install kubectl 
 }
 
 install_helm(){
-   brew list helm  || brew install helm  
+    #brew list helm  || brew install helm  
  #$(curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash)
 }
 
@@ -233,12 +234,12 @@ if [[ $BUILD ]]; then
   fi
   
   if [  ! -f /usr/local/bin/kubectl ]; then
-    ask_for_confirmation "install k8s and helm?"
-    if answer_is_yes; then
-      install_kubectl 
-      install_helm
-      install_kops
-    fi
+    #ask_for_confirmation "install k8s and helm?"
+    #if answer_is_yes; then
+     # install_kubectl 
+     # install_helm
+     # install_kops
+    #fi
   fi
 
  #//TODO: youcomplete me install
