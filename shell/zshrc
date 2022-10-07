@@ -236,3 +236,6 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 # gh cli 
 compctl -K _gh gh
+
+
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
