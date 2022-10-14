@@ -168,6 +168,7 @@ if _has fzf; then
 
   # Source fzf-cd plugin.
   if [[ -f ~/.dotfiles/third_party/zsh-interactive-cd/zsh-interactive-cd.plugin.zsh ]]; then
+    echo "SOURCING interactive zsh plugin"
     source ~/.dotfiles/third_party/zsh-interactive-cd/zsh-interactive-cd.plugin.zsh
   fi
 
@@ -223,7 +224,10 @@ export NVM_DIR="$HOME/.nvm"
 export PATH=$PATH:/usr/local/go/bin
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-source ~/.kubectl_fzf.plugin.zsh
+#source ~/.kubectl_fzf.plugin.zsh
+#source <(kubectl completion zsh) >> ~/.zshrc
+#source ~/.kubectl_fzf.plugin.zsh >> ~/.zshrc
+
 
 # No Hisotry logging for Jrnl
 setopt HIST_IGNORE_SPACE
@@ -238,4 +242,30 @@ export SDKMAN_DIR="$HOME/.sdkman"
 compctl -K _gh gh
 
 
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+export GOPATH=$(go env GOPATH)
+
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH:$GOPATH/bin"
+
+
+alias kcx="kubectl ctx"
+export rt NVM_DIR="$HOME/.nvm"
+    [ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && \. "$(brew --prefix)/opt/nvm/nvm.sh" # This loads nvm
+        [ -s "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
+alias kns="kubectl ns"
+
+
+export XDG_CONFIG_HOME=~/.xdg
+
+
+createProjectAliases() {
+for directory in ~/projects/*/*/*
+do  
+  basedir=$(echo $directory | xargs -n 1 basename)
+  tempalias="alias $basedir='cd $directory'"
+  echo "Creating alias $tempalias "
+  eval $tempalias
+done
+}
+
+createProjectAliases
+
