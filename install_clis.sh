@@ -49,6 +49,18 @@ answer_is_yes() {
   [[ "$REPLY" =~ ^[Yy]$ ]] \
     && return 0 \
     || return 1
+}i
+
+
+install_krew(){
+  set -x; cd "$(mktemp -d)" &&
+  OS="$(uname | tr '[:upper:]' '[:lower:]')" 
+  ARCH="$(uname -m | sed -e 's/x86_64/amd64/' -e 's/\(arm\)\(64\)\?.*/\1\2/' -e 's/aarch64$/arm64/')" 
+  KREW="krew-${OS}_${ARCH}" 
+  curl -fsSLO "https://github.com/kubernetes-sigs/krew/releases/latest/download/${KREW}.tar.gz" 
+  tar zxvf "${KREW}.tar.gz" 
+  ./"${KREW}" install krew 
+
 }
 ask_for_confirmation "install standard cli tools you need"
   if answer_is_yes; then 
@@ -60,7 +72,7 @@ ask_for_confirmation "install standard cli tools you need"
     brew install node
     brew install nvm
     brew install fzf
-    wget https://raw.githubusercontent.com/bonnefoa/kubectl-fzf/main/shell/kubectl_fzf.plugin.zsh -O ~/.kubectl_fzf.plugin.zsh
+    curl https://raw.githubusercontent.com/bonnefoa/kubectl-fzf/main/shell/kubectl_fzf.plugin.zsh -O ~/.kubectl_fzf.plugin.zsh
     echo "You have to install kubectl-fzf-server to get this plugin to work"
     echo -e '\e]8;;https://github.com/bonnefoa/kubectl-fzf\aSee here\e]8;;\a'
     # TODO install k8s fzf plugin
@@ -70,5 +82,7 @@ ask_for_confirmation "install standard cli tools you need"
     brew install helm
     gh completion --shell zsh > $ZSH_CUSTOM/plugins/gh.zsh
     #echo "# github" >> ~/.zshrc.local
-    #echo "compctl -K _gh gh     
+    #echo "compctl -K _gh gh    
+    install_krew
+
   fi
