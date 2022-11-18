@@ -274,10 +274,14 @@ export XDG_CONFIG_HOME=~/.xdg
 createProjectAliases() {
 for directory in ~/projects/*/*/*
 do  
-  basedir=$(echo $directory | xargs -n 1 basename)
-  tempalias="alias $basedir='cd $directory'"
-  echo "Creating alias $tempalias "
-  eval $tempalias
+  orgapath=$(echo $directory | xargs dirname)
+  orga=$( echo $orgapath | xargs basename)
+  project=$(echo $directory | xargs -n 1 basename)
+  orgalias="alias $orga='cd $orgapath'"
+  projectalias="alias $project='cd $directory'"
+  #echo "Creating alias $projectalias"
+  eval $tempaliasi
+  eval $orgalias
 done
 }
 
