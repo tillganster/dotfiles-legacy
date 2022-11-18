@@ -168,7 +168,7 @@ if _has fzf; then
 
   # Source fzf-cd plugin.
   if [[ -f ~/.dotfiles/third_party/zsh-interactive-cd/zsh-interactive-cd.plugin.zsh ]]; then
-    echo "SOURCING interactive zsh plugin"
+    #echo "SOURCING interactive zsh plugin"
     source ~/.dotfiles/third_party/zsh-interactive-cd/zsh-interactive-cd.plugin.zsh
   fi
 
