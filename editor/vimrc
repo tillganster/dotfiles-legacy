@@ -62,8 +62,7 @@ Plug 'google/vim-maktaba', { 'tag': 'v0.15.0' }
 Plug 'bazelbuild/vim-bazel'
 
 Plug 'stephpy/vim-yaml'
-
-Plug 'altercation/vim-colors-solarized'
+Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'ryanoasis/vim-devicons'
 
 Plug 'tpope/vim-fugitive', { 'tag': 'v3.0' }

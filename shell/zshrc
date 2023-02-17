@@ -31,9 +31,11 @@ plugins=(
 _has() {
   return $(whence $1 >/dev/null)
 }
-
 # Prepend a directory to path, if it exists and isn't already in the path.
 _prepend_to_path() {
+  #echo "Fail"
+  #echo "path is: $path"
+  #echo "prepend: $1"
   if [ -d $1 -a -z ${path[(r)$1]} ]; then
     path=($1 $path);
   fi
@@ -276,14 +278,26 @@ for directory in ~/projects/*/*/*
 do  
   orgapath=$(echo $directory | xargs dirname)
   orga=$( echo $orgapath | xargs basename)
+  githubsourcefolder=$(echo $directory | xargs dirname | xargs dirname )
+  githubsource=$(echo $githubsourcefolder | xargs basename )
   project=$(echo $directory | xargs -n 1 basename)
   orgalias="alias $orga='cd $orgapath'"
   projectalias="alias $project='cd $directory'"
+  sourcealias="alias $githubsource='cd $githubsourcefolder'"
+  #echo $orga
   #echo "Creating alias $projectalias"
-  eval $tempaliasi
+  #echo "Creating alias $orgalias"
+  eval $projectalias
+  eval $sourcealias
+  eval $sourcealias
+
   eval $orgalias
 done
 }
 
 createProjectAliases
+
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 

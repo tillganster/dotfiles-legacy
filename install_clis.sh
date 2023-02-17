@@ -1,4 +1,4 @@
-
+#! /bin/bash
 print_success() {
   if [[ $BUILD ]]; then
     # Print output in green
@@ -49,7 +49,7 @@ answer_is_yes() {
   [[ "$REPLY" =~ ^[Yy]$ ]] \
     && return 0 \
     || return 1
-}i
+}
 
 
 install_krew(){
@@ -85,4 +85,4 @@ ask_for_confirmation "install standard cli tools you need"
     #echo "compctl -K _gh gh    
     install_krew
 
-  fi
+  fi;
