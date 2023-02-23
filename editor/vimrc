@@ -62,6 +62,8 @@ Plug 'google/vim-maktaba', { 'tag': 'v0.15.0' }
 Plug 'bazelbuild/vim-bazel'
 
 Plug 'stephpy/vim-yaml'
+
+# Plug 'altercation/vim-colors-solarized'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'ryanoasis/vim-devicons'
 
@@ -95,7 +97,7 @@ if (&t_Co > 2 || has("gui_running"))
   syntax enable
   set background=dark
   " solarized won't exist if we didn't run :PlugInstall
-  silent! colorscheme solarized
+  silent! colorscheme dracula
 endif
 
 " Only do this part when compiled with support for autocommands.
