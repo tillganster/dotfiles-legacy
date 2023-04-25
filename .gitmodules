@@ -7,6 +7,3 @@
 [submodule "shell/zsh-autosuggestions"]
 	path = shell/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions.git
-[submodule "shell/kube-tmux"]
-	path = shell/kube-tmux
-	url = https://github.com/jonmosco/kube-tmux.git

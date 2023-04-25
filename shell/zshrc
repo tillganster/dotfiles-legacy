@@ -55,8 +55,10 @@ _append_to_path() {
   fi
 }
 
+_prepend_to_path ~/.porter
 _prepend_to_path /usr/local/bin
 _prepend_to_path $HOME/.local/bin
+_prepend_to_path $HOME/Library/Python/3.9/bin
 
 export EDITOR='vim'
 
@@ -83,6 +85,8 @@ alias t="tmux a -d 2> /dev/null || tmux"
 alias python="python3.9"
 alias pip="pip3"
 
+# alias for colorized cat 
+alias ccat="pygmentize -O style=dracula"
 # Use Neovim instead of classic vim (if available)
 if _has nvim; then
   alias vim="nvim"
@@ -181,6 +185,8 @@ if _has fzf; then
     source ~/.dotfiles/third_party/zsh-interactive-cd/zsh-interactive-cd.plugin.zsh
   fi
 
+
+
   # Display source tree and file preview for CTRL-T and ALT-C.
   if _has tree; then
     # Show subdir tree for directories.
@@ -243,12 +249,15 @@ setopt HIST_IGNORE_SPACE
 alias jrnl=" jrnl"
 alias kctr='kubectl -n rook-ceph exec -it $(kubectl -n rook-ceph get pod -l "app=rook-ceph-tools" -o jsonpath="{.items[0].metadata.name}") bash'
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 # gh cli 
 compctl -K _gh gh
+ if type brew &>/dev/null; then
+        FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+
+             autoload -Uz compinit
+                  compinit
+ fi
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -309,5 +318,9 @@ done
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
 
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 #[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/tganste/.sdkman"
+[[ -s "/Users/tganste/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/tganste/.sdkman/bin/sdkman-init.sh"

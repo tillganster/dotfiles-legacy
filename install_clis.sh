@@ -80,6 +80,9 @@ ask_for_confirmation "install standard cli tools you need"
     brew install go-task/tap/go-task
     brew install kubectl 
     brew install helm
+    brew install python3.9
+    pip3 install Pygments
+    go install github.com/go-tmux/kube-tmux
     gh completion --shell zsh > $ZSH_CUSTOM/plugins/gh.zsh
     #echo "# github" >> ~/.zshrc.local
     #echo "compctl -K _gh gh    

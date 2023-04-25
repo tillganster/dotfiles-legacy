@@ -331,6 +331,7 @@ let g:coc_disable_startup_warning = 1
 
 " tabmotions  //t to open empty new tab
 nnoremap t :tabnew<CR>
+nnoremap <C-t> :tabclose<CR>
 nnoremap <S-k> :tabn<CR>
 nnoremap <S-j> :tabp<CR>
 nnoremap <C-x> :q!<CR>
