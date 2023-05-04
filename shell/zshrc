@@ -290,7 +290,7 @@ export XDG_CONFIG_HOME=~/.xdg
 
 
 createProjectAliases() {
-for directory in ~/projects/*/*/*
+for directory in $HOME/projects/*/*/*
 do  
   orgapath=$(echo $directory | xargs dirname)
   orga=$( echo $orgapath | xargs basename)
@@ -306,13 +306,14 @@ do
   eval $projectalias
   eval $sourcealias
   eval $sourcealias
-
   eval $orgalias
+
 done
 }
 
-[ -d "~/projects" ] && createProjectAliases
-
+if [ -d "$HOME/projects" ]; then
+  createProjectAliases
+fi
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
