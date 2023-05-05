@@ -154,6 +154,9 @@ fi
 
 # Configure fzf (if available).
 if _has fzf; then
+  if [ -e "$HOME/.fzf-tab" ]; then
+    source "$HOME/.fzf-tab/fzf-tab.plugin.zsh"
+  fi
   # Source fzf key bindings and auto-completion.
   if [ -e /usr/local/opt/fzf/shell/completion.zsh ]; then
     # Source fzf scripts via Homebrew.
@@ -284,7 +287,7 @@ export rt NVM_DIR="$HOME/.nvm"
     [ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && \. "$(brew --prefix)/opt/nvm/nvm.sh" # This loads nvm
         [ -s "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
 alias kns="kubectl ns"
-
+alias tp="telepresence"
 
 export XDG_CONFIG_HOME=~/.xdg
 
