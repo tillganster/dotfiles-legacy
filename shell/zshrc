@@ -32,6 +32,7 @@ plugins=(
   aws
   kops
   kubectl
+  mvn
 )
 
 # Returns whether the given command is executable or aliased.
@@ -58,7 +59,8 @@ _append_to_path() {
 _prepend_to_path ~/.porter
 _prepend_to_path /usr/local/bin
 _prepend_to_path $HOME/.local/bin
-_prepend_to_path $HOME/Library/Python/3.9/bin
+# _prepend_to_path $HOME/Library/Python/3.9/bin       
+_prepend_to_path $(gem environment gemdir)/bin
 
 export EDITOR='vim'
 
@@ -82,9 +84,10 @@ alias tmux="TERM=screen-256color-bce tmux"
 alias t="tmux a -d 2> /dev/null || tmux"
 
 # Use Python 3! https://pythonclock.org
-alias python="python3.9"
-alias pip="pip3"
-
+# alias python="python3.9"
+# alias pip="pip3"
+# alias python='eval $(which python3)'
+# alias pip='eval $(which pip3)'
 # alias for colorized cat 
 alias ccat="pygmentize -O style=dracula"
 # Use Neovim instead of classic vim (if available)
@@ -255,13 +258,14 @@ alias kctr='kubectl -n rook-ceph exec -it $(kubectl -n rook-ceph get pod -l "app
 
 # gh cli 
 compctl -K _gh gh
+compctl -K _task task
  if type brew &>/dev/null; then
         FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 
              autoload -Uz compinit
                   compinit
  fi
-
+source /opt/homebrew/etc/bash_completion.d/az
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/Users/tillganster/usr/local/bin/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
@@ -288,8 +292,41 @@ export rt NVM_DIR="$HOME/.nvm"
         [ -s "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
 alias kns="kubectl ns"
 alias tp="telepresence"
-
 export XDG_CONFIG_HOME=~/.xdg
+
+alias bashly='docker run --rm -it --user $(id -u):$(id -g) --volume "$PWD:/app" dannyben/bashly'
+createProjectAliases2() {
+ eval "alias mercedes-benz='cd $HOME/projects/mercedes-benz'"
+  
+  for orgdir in $HOME/projects/mercedes-benz/*;
+  do
+    #echo "Orgdir loop $orgdir"
+    organame=$(basename $orgdir)
+    eval  "alias $organame='cd $orgdir'"
+
+       
+    for repodir in $orgdir/*;
+    do
+      reponame=$(basename $repodir)
+      
+      if type $reponame >/dev/null 2>&1; then
+       true
+      else
+        if [ "$reponame" = 'argo' ]; then 
+        true
+        else 
+          eval  "alias $reponame='cd $repodir'" 
+          repocodename="$reponame-code"
+          eval "alias '$repocodename'='cd $repodir; code .'"
+        fi
+      fi
+
+      #echo "Repo loop $repodir"
+    done
+
+  done
+}
+
 
 
 createProjectAliases() {
@@ -308,23 +345,37 @@ do
   #echo "Creating alias $orgalias"
   eval $projectalias
   eval $sourcealias
-  eval $sourcealias
+  #eval $sourcealias
   eval $orgalias
 
 done
 }
-
 if [ -d "$HOME/projects" ]; then
-  createProjectAliases
+ createProjectAliases2
 fi
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
-
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+# GH CLI ALIASES
+#alias ruby="/opt/homebrew/Cellar/ruby/3.2.2_1/bin/ruby"
+#alias gem="/opt/homebrew/Cellar/ruby/3.2.2_1/bin/gem"
+alias ghmb="GH_HOST=git.i.mercedes-benz.com gh"
+export GIT_EXTERNAL_DIFF=difft git diff
+ #To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 #[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/tganste/.sdkman"
 [[ -s "/Users/tganste/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/tganste/.sdkman/bin/sdkman-init.sh"
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+alias vaultmb="vault -address=https://hcvault.app.corpintra.net/ -namespace=dp"
+
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+alias docker-compose="docker compose"
+alias restart-darc="kubectl -n darc rollout restart deployment/host-app-backend-local && kubectl get deployment/host-app-backend-local -n darc -w"
+alias dbx="docker buildx build --platform=linux/amd64,linux/arm64"
+export GOROOT="$(brew --prefix golang)/libexec"
+_append_to_path /opt/homebrew/Cellar/postgresql@15/15.9/bin
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+#[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

@@ -65,7 +65,9 @@ Plug 'stephpy/vim-yaml'
 
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'ryanoasis/vim-devicons'
-
+Plug 'andrewstuart/vim-kubernetes'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 Plug 'tpope/vim-fugitive', { 'tag': 'v3.0' }
 Plug 'airblade/vim-gitgutter'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -335,4 +337,5 @@ nnoremap <C-t> :tabclose<CR>
 nnoremap <S-k> :tabn<CR>
 nnoremap <S-j> :tabp<CR>
 nnoremap <C-x> :q!<CR>
-
+" configs for utilssnippt
+let g:UltiSnipsExpandTrigger="<Enter>"
