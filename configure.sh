@@ -14,29 +14,33 @@ fi
 
 while getopts :ht: option; do
   case $option in
-    h)
-      echo "$usage"
-      echo
-      echo "OPTIONS"
-      echo "-h            Output verbose usage message"
-      echo "-t build      Set up dotfile symlinks and configure oh-my-zsh"
-      echo "-t clean      Remove all existing dotfiles symlinks"
-      exit;;
-    t)
-      if [[ "build" =~ ^${OPTARG} ]]; then
-        BUILD=true
-      elif [[ "clean" =~ ^${OPTARG} ]]; then
-        BUILD=
-      else
-        echo "$usage" >&2
-        exit 1
-      fi;;
-    \?)
-      echo "Unknown option: -$OPTARG" >&2
-      exit 1;;
-    :)
-      echo "Missing argument for -$OPTARG" >&2
-      exit 1;;
+  h)
+    echo "$usage"
+    echo
+    echo "OPTIONS"
+    echo "-h            Output verbose usage message"
+    echo "-t build      Set up dotfile symlinks and configure oh-my-zsh"
+    echo "-t clean      Remove all existing dotfiles symlinks"
+    exit
+    ;;
+  t)
+    if [[ "build" =~ ^${OPTARG} ]]; then
+      BUILD=true
+    elif [[ "clean" =~ ^${OPTARG} ]]; then
+      BUILD=
+    else
+      echo "$usage" >&2
+      exit 1
+    fi
+    ;;
+  \?)
+    echo "Unknown option: -$OPTARG" >&2
+    exit 1
+    ;;
+  :)
+    echo "Missing argument for -$OPTARG" >&2
+    exit 1
+    ;;
   esac
 done
 
@@ -51,7 +55,7 @@ declare -a FILES_TO_SYMLINK=(
   'shell/dircolors.256dark'
   'shell/ignore'
   'shell/tmux.conf'
-  'shell/zshrc' 
+  'shell/zshrc'
   'shell/zprofile'
   'shell/fzf-tab'
 
@@ -64,7 +68,7 @@ declare -a FULL_PATH_FILES_TO_SYMLINK=(
   'config/jrnl/jrnl.yaml'
 
   'config/Code/User/settings.json'
-  'config/Code/User/keybindings.json'
+  # 'config/Code/User/keybindings.json'
 )
 
 print_success() {
@@ -93,7 +97,7 @@ print_question() {
 }
 
 execute() {
-  $1 &> /dev/null
+  $1 &>/dev/null
   print_result $? "${2:-$1}"
 }
 
@@ -114,9 +118,9 @@ ask_for_confirmation() {
 }
 
 answer_is_yes() {
-  [[ "$REPLY" =~ ^[Yy]$ ]] \
-    && return 0 \
-    || return 1
+  [[ "$REPLY" =~ ^[Yy]$ ]] &&
+    return 0 ||
+    return 1
 }
 
 install_zsh() {
@@ -124,7 +128,7 @@ install_zsh() {
   if [ -z "$(command -v zsh)" ]; then
     # If zsh isn't installed, get the platform of the current machine and
     # install zsh with the appropriate package manager.
-    platform=$(uname);
+    platform=$(uname)
     if [[ $platform == 'Linux' ]]; then
       if [[ -f /etc/redhat-release ]]; then
         sudo yum install zsh
@@ -134,7 +138,7 @@ install_zsh() {
       fi
     elif [[ $platform == 'Darwin' ]]; then
       brew install zsh
-      
+
     fi
   fi
   # Set the default shell to zsh if it isn't currently set to zsh
@@ -150,27 +154,6 @@ install_zsh() {
   if [[ ! -d $HOME/.oh-my-zsh/custom/themes/powerlevel10k ]]; then
     git clone https://github.com/romkatv/powerlevel10k.git "$HOME/.oh-my-zsh/custom/themes/powerlevel10k"
   fi
-}
-
-#install_kubectl() {
-  #$(curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl)
-  #chmod +x ./kubectl
-  #sudo mv ./kubectl /usr/local/bin/kubectl
-  #kubectl version --client
-  #brew list kubectl || brew install kubectl 
-#}
-
-#install_helm(){
-    #brew list helm  || brew install helm  
- #$(curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash)
-#}
-
-install_kops(){
-  #$(curl -Lo kops https://github.com/kubernetes/kops/releases/download/$(curl -s https://api.github.com/repos/kubernetes/kops/releases/latest | grep tag_name | cut -d '"' -f 4)/kops-linux-amd64)
-  #chmod +x ./kops
-  #sudo mv ./kops /usr/local/bin/
-  
-  echo "installing kops - NOT"
 }
 
 link_file() {
@@ -233,17 +216,17 @@ if [[ $BUILD ]]; then
       install_zsh
     fi
   fi
-  
+
   #if [  ! -f /usr/local/bin/kubectl ]; then
-    #ask_for_confirmation "install k8s and helm?"
-    #if answer_is_yes; then
-     # install_kubectl 
-     # install_helm
-     # install_kops
-    #fi
+  #ask_for_confirmation "install k8s and helm?"
+  #if answer_is_yes; then
+  # install_kubectl
+  # install_helm
+  # install_kops
+  #fi
   #fi
 
- #//TODO: youcomplete me install
+  #//TODO: youcomplete me install
 
   # Link static gitignore.
   git config --global include.path ~/.gitconfig.static
@@ -255,16 +238,16 @@ if [[ $BUILD ]]; then
 
     git config --global color.ui true
 
-    git config --global color.diff-highlight.oldNormal    "red"
+    git config --global color.diff-highlight.oldNormal "red"
     git config --global color.diff-highlight.oldHighlight "red 52"
-    git config --global color.diff-highlight.newNormal    "green"
+    git config --global color.diff-highlight.newNormal "green"
     git config --global color.diff-highlight.newHighlight "green 22"
 
-    git config --global color.diff.meta       "yellow"
-    git config --global color.diff.frag       "magenta"
-    git config --global color.diff.commit     "yellow"
-    git config --global color.diff.old        "red"
-    git config --global color.diff.new        "green"
+    git config --global color.diff.meta "yellow"
+    git config --global color.diff.frag "magenta"
+    git config --global color.diff.commit "yellow"
+    git config --global color.diff.old "red"
+    git config --global color.diff.new "green"
     git config --global color.diff.whitespace "red reverse"
   fi
 fi
