@@ -1,3 +1,6 @@
+autoload -Uz compinit
+compinit
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -265,7 +268,7 @@ compctl -K _task task
              autoload -Uz compinit
                   compinit
  fi
-source /opt/homebrew/etc/bash_completion.d/az
+#source /opt/homebrew/etc/bash_completion.d/az
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/Users/tillganster/usr/local/bin/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"

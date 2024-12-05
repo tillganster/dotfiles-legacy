@@ -196,6 +196,8 @@ for i in "${FILES_TO_SYMLINK[@]}"; do
   fi
 done
 
+# ln config/Code/User/settings.json ~/Library/Application\ Support/Code/User/settings.json 
+
 for i in "${FULL_PATH_FILES_TO_SYMLINK[@]}"; do
   sourceFile="$(pwd)/$i"
   targetFile="$HOME/.$i"
