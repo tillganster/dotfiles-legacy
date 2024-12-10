@@ -58,7 +58,7 @@ _append_to_path() {
 _prepend_to_path ~/.porter
 _prepend_to_path /usr/local/bin
 _prepend_to_path $HOME/.local/bin
-_prepend_to_path $HOME/Library/Python/3.9/bin
+#_prepend_to_path $HOME/Library/Python/3.9/bin
 
 export EDITOR='vim'
 
@@ -82,8 +82,8 @@ alias tmux="TERM=screen-256color-bce tmux"
 alias t="tmux a -d 2> /dev/null || tmux"
 
 # Use Python 3! https://pythonclock.org
-alias python="python3.9"
-alias pip="pip3"
+#alias python="python3.9"
+#:wqalias pip="pip3"
 
 # alias for colorized cat 
 alias ccat="pygmentize -O style=dracula"
@@ -326,5 +326,12 @@ fi
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 #[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/Users/tganste/.sdkman"
-[[ -s "/Users/tganste/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/tganste/.sdkman/bin/sdkman-init.sh"
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# Add JBang to environment
+alias j!=jbang
+export PATH="$HOME/.jbang/bin:$PATH"
+
+alias sort_logs="jq -s '.[] | (.containerName + \" \" + .message)  | match(\"^(node\\\\d+ )(\\\\d{4}-\\\\d{2}-\\\\d{2}T\\\\d{2}:\\\\d{2}:\\\\d{2}\\\\.\\\\d{9}\\\\+\\\\d{2}:\\\\d{2}) (.*)\") | {timestamp: (.captures[1].string), txt: (.captures[0].string + .captures[2].string) }' | jq -s -r  'sort_by(.timestamp) | .[]' | jq -s -r '.[] | .txt'"
+

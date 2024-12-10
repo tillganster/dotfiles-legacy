@@ -72,6 +72,9 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'valloric/youcompleteme'
 Plug 'easymotion/vim-easymotion'
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
+Plug 'andrewstuart/vim-kubernetes'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 call plug#end()
 
 " Map ctrl-n to toggle NERDTree.
@@ -332,7 +335,12 @@ let g:coc_disable_startup_warning = 1
 " tabmotions  //t to open empty new tab
 nnoremap t :tabnew<CR>
 nnoremap <C-t> :tabclose<CR>
-nnoremap <S-k> :tabn<CR>
+nnoremap <S-k> :tabnew<CR>
 nnoremap <S-j> :tabp<CR>
 nnoremap <C-x> :q!<CR>
+let g:ycm_key_list_stop_completion = ['<C-y>', '<CR>']
+
+let g:UltiSnipsExpandTrigger="<Right>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
