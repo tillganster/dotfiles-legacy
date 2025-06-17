@@ -64,6 +64,7 @@ _prepend_to_path /usr/local/bin
 _prepend_to_path $HOME/.local/bin
 # _prepend_to_path $HOME/Library/Python/3.9/bin       
 _prepend_to_path $(gem environment gemdir)/bin
+_prepend_to_path $GOBIN 
 
 export EDITOR='vim'
 
@@ -194,7 +195,8 @@ if _has fzf; then
     source ~/.dotfiles/third_party/zsh-interactive-cd/zsh-interactive-cd.plugin.zsh
   fi
 
-
+  export LDFLAGS="-L/opt/homebrew/opt/postgresql@15/lib"
+  export CPPFLAGS="-I/opt/homebrew/opt/postgresql@15/include"
 
   # Display source tree and file preview for CTRL-T and ALT-C.
   if _has tree; then
@@ -234,6 +236,18 @@ function chpwd() {
     ls -l
 }
 
+function kxsec(){
+  tmpl='{{range $k,$v := .data}}{{printf "%s: " $k}}{{if not $v}}{{$v}}{{else}}{{$v | base64decode}}{{end}}{{"\n"}}{{end}}'
+  #if second parameter is set change tmpl
+  if [ -n "$2" ]; then
+    tmpl="{{ index .data \"$2\"| base64decode }}"
+  fi
+  k get secret $1  -o go-template="$tmpl" 
+}
+
+	
+   
+
 source ~/.dotfiles/shell/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.dotfiles/shell/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
@@ -245,7 +259,7 @@ alias sc='bash ~/sshlist'
 alias tf='terraform'
 
 export NVM_DIR="$HOME/.nvm"
-export PATH=$PATH:/usr/local/go/bin
+
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 #source ~/.kubectl_fzf.plugin.zsh
@@ -284,7 +298,7 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-export GOPATH=$(go env GOPATH)
+#export GOPATH=$(go env GOPATH)
 
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH:$GOPATH/bin:/usr/bin"
 
@@ -373,12 +387,21 @@ export SDKMAN_DIR="/Users/tganste/.sdkman"
 export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 alias vaultmb="vault -address=https://hcvault.app.corpintra.net/ -namespace=dp"
 
-export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+#export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 alias docker-compose="docker compose"
 alias restart-darc="kubectl -n darc rollout restart deployment/host-app-backend-local && kubectl get deployment/host-app-backend-local -n darc -w"
 alias dbx="docker buildx build --platform=linux/amd64,linux/arm64"
-export GOROOT="$(brew --prefix golang)/libexec"
-_append_to_path /opt/homebrew/Cellar/postgresql@15/15.9/bin
+#export GOROOT="$(brew --prefix golang)/libexec"
+#_append_to_path /opt/homebrew/Cellar/postgresql@15/15.9/bin
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 #[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
+  export LDFLAGS="-L/opt/homebrew/opt/postgresql@15/lib"
+  export CPPFLAGS="-I/opt/homebrew/opt/postgresql@15/include"
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+. ~/.asdf/plugins/golang/set-env.zsh
+
+
+compdef _myksecret myksecret
+source /Users/TGANSTE/.config/mbos/mbos_do_completion_zsh.sh

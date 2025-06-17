@@ -54,7 +54,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'vim-airline/vim-airline', { 'tag': 'v0.10' }
 
 if executable('node')
-  Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+ " Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 endif
 
 Plug 'sheerun/vim-polyglot', { 'tag': 'v4.4.3' }
@@ -71,7 +71,7 @@ Plug 'honza/vim-snippets'
 Plug 'tpope/vim-fugitive', { 'tag': 'v3.0' }
 Plug 'airblade/vim-gitgutter'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'valloric/youcompleteme'
+" Plug 'valloric/youcompleteme'
 Plug 'easymotion/vim-easymotion'
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 call plug#end()
