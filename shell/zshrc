@@ -382,8 +382,8 @@ export GIT_EXTERNAL_DIFF=difft git diff
  #To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 #[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/Users/tganste/.sdkman"
-[[ -s "/Users/tganste/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/tganste/.sdkman/bin/sdkman-init.sh"
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 alias vaultmb="vault -address=https://hcvault.app.corpintra.net/ -namespace=dp"
 
@@ -405,3 +405,6 @@ export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
 compdef _myksecret myksecret
 source /Users/TGANSTE/.config/mbos/mbos_do_completion_zsh.sh
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)
